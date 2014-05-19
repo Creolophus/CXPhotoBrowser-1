@@ -1,15 +1,15 @@
 PODS:
   - AFNetworking (1.2.1)
   - SDWebImage (3.2):
-    - SDWebImage/MapKit
-  - SDWebImage/MapKit (3.2)
+    - SDWebImage/Core
+  - SDWebImage/Core (3.2)
 
 DEPENDENCIES:
   - AFNetworking
   - SDWebImage (~> 3.2)
 
 SPEC CHECKSUMS:
-  AFNetworking: 616da0028916ce296f5c3cef74e5552eb4e10e13
-  SDWebImage: 8082fe8d658ccafaaecd9e5ecda12ed01f09ba9c
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
+  SDWebImage: f742ac91b65bd34b6d452325115e2ded3a73380e
 
-COCOAPODS: 0.18.1
+COCOAPODS: 0.32.1

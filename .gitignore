@@ -1,4 +1,8 @@
 # Xcode
+
+Podfile.lock
+Pods
+
 .DS_Store
 build/
 *.pbxuser
