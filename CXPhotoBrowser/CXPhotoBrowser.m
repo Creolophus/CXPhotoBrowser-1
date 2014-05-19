@@ -332,7 +332,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     {
         browserNavigationBarView = [[CXBrowserNavBarView alloc] initWithFrame:frame];
     }
-//    [self.view addSubview:browserNavigationBarView];
+    //    [self.view addSubview:browserNavigationBarView];
     [browserNavigationBarView assignPhotoBrowser:self];
 }
 
@@ -424,7 +424,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (index >= [self numberOfPhotos]) index = [self numberOfPhotos]-1;
     _currentPageIndex = index;
 	if ([self isViewLoaded]) {
-//        [self changeToPageAtIndex:index];
+        //        [self changeToPageAtIndex:index];
         if (!_viewIsActive) [self tilePages]; // Force tiling if view is not visible
     }
 }
@@ -560,7 +560,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
     if (index < [self numberOfPhotos]) {
 		CGRect pageFrame = [self frameForPageAtIndex:index];
 		_pagingScrollView.contentOffset = CGPointMake(pageFrame.origin.x - PADDING, 0);
-//        [self currentPageDidUpdated];
+        //        [self currentPageDidUpdated];
 	}
 }
 #pragma mark - Frame Calculations
@@ -621,7 +621,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (CGRect)frameForToolBarViewAtOrientation:(UIInterfaceOrientation)orientation
 {
-
+    
     CGFloat height = kToolBarViewHeightPortrait;
     if (_dataSource && [_dataSource respondsToSelector:@selector(heightForToolBarInInterfaceOrientation:)])
     {
@@ -768,8 +768,17 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)toggleControls
 {
-    [self setToolBarViewsHidden:![self areControlsHidden] animated:YES];
+    if ([_photos[self.currentPageIndex] isAVideo]) {
+        if ([_delegate respondsToSelector:@selector(didSelectVideoAtIndex:scrollView:)]) {
+            CXZoomingScrollView *currentZoomingScrollView = [self pageDisplayedAtIndex:self.currentPageIndex];
+            [_delegate didSelectVideoAtIndex:self.currentPageIndex scrollView:currentZoomingScrollView];
+        }
+    }
+    else {
+        [self setToolBarViewsHidden:![self areControlsHidden] animated:YES];
+    }
 }
+
 
 - (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated
 {
@@ -796,14 +805,14 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.35];
     }
-
+    
     [browserToolBarView setAlpha:hidden ? 0. : 1.];
     
     if (animated) [UIView commitAnimations];
 }
 #pragma mark - Data
 - (void)reloadData {
-
+    
     // Reset
     _photoCount = NSNotFound;
     
@@ -907,7 +916,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 
 - (void)unloadAllUnderlyingPhotos
 {
-    for (id p in _photos) { if (p != [NSNull null]) [p unloadUnderlyingImage]; } 
+    for (id p in _photos) { if (p != [NSNull null]) [p unloadUnderlyingImage]; }
 }
 
 #pragma mark - Notify Handle
@@ -915,7 +924,7 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
 {
     id <CXPhotoProtocol> photo = [notification object];
     //show loading view
-//    NSUInteger index = [self indexOfPhoto:photo];
+    //    NSUInteger index = [self indexOfPhoto:photo];
     
     CXZoomingScrollView *page = [self pageDisplayingPhoto:photo];
     if (page)

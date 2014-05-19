@@ -241,6 +241,11 @@
 {
     return YES;
 }
+
+- (void)didSelectVideoAtIndex:(NSInteger)index scrollView:(CXZoomingScrollView *)scrollView {
+    NSLog(@"select a video!");
+}
+
 #pragma mark - PhotBrower Actions
 - (void)photoBrowserDidTapDoneButton:(UIButton *)sender
 {

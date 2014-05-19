@@ -13,6 +13,8 @@
 #import "CXBrowserNavBarView.h"
 #import "CXBrowserToolBarView.h"
 
+@class CXZoomingScrollView;
+
 @protocol CXPhotoBrowserDataSource;
 @protocol CXPhotoBrowserDelegate;
 @interface CXPhotoBrowser : UIViewController
@@ -58,7 +60,7 @@
 
 /**
  @param photoBrower The current photobrowser to present.
- @param index 
+ @param index
  
  @return CXPhoto for showing.
  */
@@ -105,6 +107,18 @@
 @end
 
 @protocol CXPhotoBrowserDelegate <NSObject>
+
+@required
+
+/**
+ * Notify the delegate that a video has been tapped
+ 
+ @param index       The current index
+ @param scrollView  The scrollView that is presenting the video
+ 
+ */
+
+- (void)didSelectVideoAtIndex:(NSInteger)index scrollView:(CXZoomingScrollView *)scrollView;
 
 @optional
 
