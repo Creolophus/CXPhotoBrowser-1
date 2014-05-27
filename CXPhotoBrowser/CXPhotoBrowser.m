@@ -774,6 +774,12 @@ static CGFloat kToolBarViewHeightLadnScape = 100;
             [_delegate didSelectVideoAtIndex:self.currentPageIndex scrollView:currentZoomingScrollView];
         }
     }
+    else if ([_photos[self.currentPageIndex] isAAudio]) {
+        if ([_delegate respondsToSelector:@selector(didSelectAudioAtIndex:scrollView:)]) {
+            CXZoomingScrollView *currentZoomingScrollView = [self pageDisplayedAtIndex:self.currentPageIndex];
+            [_delegate didSelectAudioAtIndex:self.currentPageIndex scrollView:currentZoomingScrollView];
+        }
+    }
     else {
         [self setToolBarViewsHidden:![self areControlsHidden] animated:YES];
     }

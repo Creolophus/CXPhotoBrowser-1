@@ -111,7 +111,7 @@
 @required
 
 /**
- * Notify the delegate that a video has been tapped
+ * Notify the delegate that a video file has been tapped
  
  @param index       The current index
  @param scrollView  The scrollView that is presenting the video
@@ -119,6 +119,16 @@
  */
 
 - (void)didSelectVideoAtIndex:(NSInteger)index scrollView:(CXZoomingScrollView *)scrollView;
+
+/**
+ * Notify the delegate that a audio file has been tapped
+ 
+ @param index       The current index
+ @param scrollView  The scrollView that is presenting the video
+ 
+ */
+
+- (void)didSelectAudioAtIndex:(NSInteger)index scrollView:(CXZoomingScrollView *)scrollView;
 
 @optional
 

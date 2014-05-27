@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong, readonly) UIImage *underlyingImage;
 @property (nonatomic, assign) BOOL isAVideo;
+@property (nonatomic, assign) BOOL isAAudio;
 
 // Class
 + (CXPhoto *)photoWithImage:(UIImage *)image;
